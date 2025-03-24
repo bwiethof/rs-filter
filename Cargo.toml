@@ -1,0 +1,11 @@
+ [workspace]
+ resolver = "2"
+ members = [
+     "filters/kalman-filter"
+ ]
+
+
+[workspace.package]
+version = "0.1.0"
+
+[workspace.dependencies]

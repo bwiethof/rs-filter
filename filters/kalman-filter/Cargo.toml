@@ -1,0 +1,8 @@
+[package]
+name = "kalman-filter"
+version = "0.1.0"
+description = "Sample Rust implementation of Kalman filter"
+edition = "2024"
+
+[dependencies]
+nalgebra = { version = "0.33.2", features = ["rand"] }
