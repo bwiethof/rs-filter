@@ -1,13 +1,11 @@
 use crate::alias::*;
 use nalgebra as na;
-use nalgebra::SMatrix;
 use std::fmt::Debug;
 
 #[derive(Debug)]
 pub struct TransitionError {}
 
 struct KalmanFilter<const TC: usize = 1, const MR: usize = 1, const BR: usize = 1> {
-    // Model might be better somewhere else separate -> interface with model might be better but there hsould be more constrainst what the model should look like
     transition_model: TransitionModel<TC>,
     measurement_model: MeasurementModel<MR, TC>,
     measurement_noise: TransitionNoise<TC>,
@@ -67,7 +65,7 @@ impl<const TC: usize, const MR: usize, const BR: usize> KalmanFilter<TC, MR, BR>
 
         // a-posteriori
         let (state, cov) = self.update(predicted, observation)?;
-        
+
         // Update internal representation
         self.state = state;
         self.covariance = cov;
