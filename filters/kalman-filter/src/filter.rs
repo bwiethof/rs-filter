@@ -85,9 +85,9 @@ impl<const TC: usize, const MR: usize, const BR: usize> KalmanFilter<TC, MR, BR>
 
         let transition = self.transition_model * dt;
 
-        state += transition * state + self.input_model * u.unwrap_or(InputVector::<BR>::zeros());
+        state = transition * state + self.input_model * u.unwrap_or(InputVector::<BR>::zeros());
 
-        covariance += transition * covariance * transition.transpose() + self.measurement_noise;
+        covariance = transition * covariance * transition.transpose() + self.measurement_noise;
 
         Ok((state, covariance))
     }
